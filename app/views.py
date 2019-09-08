@@ -9,7 +9,7 @@ def index():
     root page that returns the index page
     '''
 
-    
+    title = 'Home - The best news website.'
     return render_template('index.html')
 
 @app.route('/news/<int:news_id>')
