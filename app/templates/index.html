@@ -1,17 +1,17 @@
-{% if title %}
-<title> {{ title }}</title>
-{% else %}
-<title> Welcome to the News website </title>
-{% endif %}
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
 
 <body>
-    <!-- news headlines -->
-    <h3>News Sources</h3>
-    <hr>
+    <!-- News headlines -->
+    <h3> News headlines</h3>
     <ul>
-        
-        <li>
-
-        </li>
+        {{ macro.displayNewsList(headlines)}}
     </ul>
+    <!-- Trends  -->
+    <h3> Trending </h3>
+    <ul>
+        {{ macro.displayNewsList(trending)}}
+    </ul>
+    
 </body>
