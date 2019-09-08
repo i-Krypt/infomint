@@ -1,17 +1,20 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 
+<!-- Content block -->
+{% block content %}
 
-<body>
-    <!-- News headlines -->
-    <h3> News headlines</h3>
-    <ul>
-        {{ macro.displayNewsList(headlines)}}
-    </ul>
-    <!-- Trends  -->
-    <h3> Trending </h3>
-    <ul>
-        {{ macro.displayNewsList(trending)}}
-    </ul>
-    
-</body>
+
+<!-- News headlines -->
+<h3> News headlines</h3>
+<ul>
+    {{ macro.displayNewsList(headlines)}}
+</ul>
+<!-- Trends  -->
+<h3> Trending </h3>
+<ul>
+    {{ macro.displayNewsList(trending)}}
+</ul>
+
+
+{% endblock%}
