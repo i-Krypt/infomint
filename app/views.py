@@ -10,14 +10,10 @@ def index():
     '''
 
     # Getting news sources
-    business_sources = get_sources('business')
-    science_sources = get_sources('science')
-    sports_sources = get_sources('sports')
-    technology_sources = get_sources('technology')
-    health_sources = get_sources('health')
-    entertainment_sources = get_sources('entertainment')
+    sources = get_sources()
 
-    return render_template('index.html', business = business_sources,science = science_sources,sports = sports_sources,entertainment  = entertainment_sources,health = health_sources,technology = technology_sources)
+
+    return render_template('index.html', source = sources)
 
 
 @app.route('/sources/<int:sources_id>')

@@ -1,7 +1,46 @@
-{% macro displayNewsList(news_list) %}
+{% macro displaySourcesList(sources_list) %}
 
-    {% for news in news_list %}
-        <li>{{ news.name}}</li>
+    {% for news in sources_list %}
+
+        <div class="container">
+
+            <div class="ui three column grid">
+                <div class="column">
+                        <div class="ui card">
+                                <div class="content">
+                                  <div class="center aligned header">{{news.name}}</div>
+                                  <div class="center aligned description">
+                                    <p>{{news.description | truncate(80)}}</p>
+                                  </div>
+                                </div>
+                                <div class="extra content">
+                                  <div class="center aligned author">
+                                  </div>Visit <i class="linkify icon" src="{{news.url}}"></i>
+                                </div>
+                              </div>
+
+                </div>
+
+            </div>
+                
+
+        </div>
+
+        <!-- <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <p>{{news.name}}</p>
+                </div>
+                <p class="card-body">
+                    <p>{{news.description | truncate(30)}}</p>
+                </div>
+                <div class="card-footer">
+                    <p> the language is {{news.language }}</p>
+                     <a href="{{news.url}}">view</a>
+
+                </div>
+            </div>
+        </div> -->
     {% endfor %}
 
 {% endmacro %}

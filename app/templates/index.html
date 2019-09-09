@@ -6,34 +6,24 @@
 
 
 <!-- News headlines -->
-<h3>Top business news</h3>
-<ul>
-    {{ macro.displaySourcesList(business)}}
-</ul>
-<!-- science -->
-<h3> Trending Science Topics</h3>
-<ul>
-    {{ macro.displaySourcesList(science)}}
-</ul>
-<!-- sports -->
-<h3>Sports News</h3>
-<ul>
-    {{ macro.displaySourcesList(sports)}}
-</ul>
-<!-- technology -->
-<h3> Technology Topics</h3>
-<ul>
-    {{ macro.displaySourcesList(technology)}}
-</ul>
-<!-- health -->
-<h3> Health </h3>
-<ul>
-    {{ macro.displaySourcesList(health)}}
-</ul>
-<!-- entertainment -->
-<h3> Entertainment news</h3>
-<ul>
-    {{ macro.displaySourcesList(entertainment)}}
-</ul>
+<div class="container">
+        <div class="ui top attached tabular menu">
+                <div class="item">Top news sources</div>
+              </div>
+              <div class="ui bottom attached tab segment">
+                <p></p>
+                <p></p>
+              </div>
+        
+              <br>
+        
+            
+                {{ macro.displaySourcesList(source)}}
+            
+
+</div>
+
+
+
 
 {% endblock%}
