@@ -1,59 +1,57 @@
 from app import app
 import urllib.request
 import json
-from .models import news
+from .models import sources
 
-News = news.News
+Sources = sources.Sources
+
 
 # Getting api key
-api_key = app.config['NEWS_API_KEY']
+api_key = app.config['API_KEY']
 
 # Getting the news sources base url
-base_url = app.config['MOVIE_BASE_URL']
+base_url = app.config['SOURCES_API_BASE_URL']
 
 
-def get_news(category):
+def get_sources(category):
     '''
     Function that gets the json response to our url request
     '''
 
-    get_news_url = base_url.format(category, api_key)
+    get_sources_url = base_url.format(category, api_key)
 
-    with urllib.request.urlopen(get_news_url) as url:
-        get_news_data = url.read()
-        get_news_response = json.loads(get_news_data)
+    with urllib.request.urlopen(get_sources_url) as url:
+        get_sources_data = url.read()
+        get_sources_response = json.loads(get_sources_data)
 
-        news_results = None
+        sources_results = None
 
-        if get_news_response['results']:
-            news_results_list = get_news_response['results']
-            news_results = process_results(news_results_list)
+        if get_sources_response['results']:
+            sources_results_list = get_sources_response['results']
+            sources_results = process_results(sources_results_list)
 
-    return news_results
+    return sources_results
 
 
-def process_results(news_list):
+def process_results(sources_list):
     '''
-    Function that processes the news result and transform them to a list of Objects
-    
+    Function that processes the sources result and transform them to a list of Objects
+
     Args:
-        news_list: a list of dictionaries that contain news details
+        news_list: a list of dictionaries that contain news sources details
     '''
 
-    news_results = []
-    for news_item in news_list:
-        id = news_item.get('id')
-        name = news_item.get('name')
-        author = news_item.get('author')
-        description = news_item.get('description')
-        url = news_item.get('url_path')
-        category = news_item.get('category')
-        language = news_item.get('language')
-        country = news_item.get('country')
+    sources_results = []
+    for sources_item in sources_list:
+        id = sources_item.get('id')
+        name = sources_item.get('name')
+        author = sources_item.get('author')
+        description = sources_item.get('description')
+        url = sources_item.get('url_path')
+        category = sources_item.get('category')
+        language = sources_item.get('language')
+        country = sources_item.get('country')
 
-
-        news_object = News(id,name,author,description,url,category,language,country)
-        news_results.append(news_object)
-
-
-
+        sources_object = Sources(id, name, author, description,
+                           url, category, language, country)
+        sources_results.append(sources_object)

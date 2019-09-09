@@ -1,4 +1,4 @@
-class News:
+class Sources:
     '''
     News class to define news sources objects
     '''
@@ -7,7 +7,10 @@ class News:
         self.id = id
         self.name = name
         self.description = description
-        self.url = "https://abcnews.go.com"
+        self.url = url
         self.category = category
         self.language = language
         self.category = category
+
+
+# class Articles:
