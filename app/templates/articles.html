@@ -1,21 +1,19 @@
+{% import 'macros.html' as macro%}
 {% extends 'base.html'%}
 
 
-<!-- content block -->
 {% block content%}
-<div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="{{articles.image}}" class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{articles.name}}</h5>
-              <p class="card-text">{{articles.content}}</p>
-              <p class="card-text"><small class="text-muted">Last updated {{articles.publishedAt}}</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-{%endfor%}
+<style>
+    nav{
+        margin: 0;
+    }
+</style><br>
+<div class="container-fluid" >
+        <a class="ui teal tag label">{{ heading }} Top Headlines</a>
+</div><br>
+<div class="container">
+    <div class="row">
+            {{ macro.showArticles(article)}}
+    </div>
+</div>
+{% endblock %}
