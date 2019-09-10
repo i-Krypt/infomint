@@ -5,8 +5,9 @@ class Config:
     '''
     General configuration parent class
     '''
-    
+
     SOURCES_API_BASE_URL ='https://newsapi.org/v2/sources?apiKey={}'
+    ARTICLES_API_BASE_URL = 'https://newsapi.org/v2/everything?domains=wsj.com,nytimes.com&apiKey={}'
 
 class ProdConfig(Config):
     '''
