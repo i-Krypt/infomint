@@ -4,6 +4,7 @@ import json
 from .models import news
 
 Sources = news.Sources
+Articles = news.Articles
 
 
 # Getting api key
@@ -56,3 +57,51 @@ def process_results(sources_list):
             sources_results.append(sources_object)
 
     return sources_results
+
+
+#Articles
+
+def get_articles():
+    '''
+    Function that gets the json response to our url request
+    '''
+
+    get_articles_url = base_url.format(api_key)
+
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
+
+        articles_results = None
+
+        if get_articles_response['articles']:
+            articles_results_list = get_articles_response['articles']
+            articles_results = process_results(articles_results_list)
+
+    return articles_results
+
+
+def process_results(articles_list):
+    '''
+    Function that processes the articles result and transform them to a list of Objects
+
+    Args:
+        articles_list: a list of dictionaries that contain news articles details
+    '''
+
+    articles_results = []
+    for articles_item in articles_list:
+        id = articles_item.get('id')
+        name = articles_item.get('name')
+        author = articles_item.get('author')
+        description = articles_item.get('description')
+        url = articles_item.get('url')
+        image = articles_item.get('image')
+        publishedAt = articles_item.get('publishedAt')
+        content = articles_item.get('content')
+        
+        if name == 'NY Times':
+            articles_object = Articles(id, name, author, description, url, image, publishedAt, content)
+            articles_results.append(articles_object)
+
+    return articles_results
