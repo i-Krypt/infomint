@@ -3,20 +3,22 @@
 {% for news in sources_list %}
 
 <div class="col-md-3">
-    
+
     <div class="ui card ">
         <div class="content">
             <div class="center aligned header"> {{news.name}}</div>
             <div class="center aligned description">
-                <p>{{news.description | truncate(80)}}</p>
+                <p>{{news.description | truncate(88)}}</p>
             </div>
         </div>
         <div class="extra content">
             <div class="center aligned author">
-            </div> <a href="/sources/{{news.id}}"> Visit <i class="linkify icon" src=""></i></a>
+            </div> <a href="/sources/{{news.id}}" style="color: blue"> Visit <i class="linkify icon" src=""></i></a>
         </div>
     </div>
+    <br>
 </div>
+
 {% endfor %}
 
 {% endmacro %}
